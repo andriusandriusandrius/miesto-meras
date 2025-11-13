@@ -2,12 +2,24 @@ namespace miesto_meras.Models{
     public class City
     {
         public string? Name {get;set;}
-        public int Id {get;set;}
         public int Population {get;set;}
         public double Gold {get;set;}
         public int Happiness{get;set;}
-        public int Production{get;set;}
-        public int Culture{get;set;}
-
+        public City(string Name, int Population, double Gold, int Happiness )
+        {
+            this.Name = Name;
+            this.Population = Population;
+            this.Gold = Gold;
+            this.Happiness = Happiness;
+        }
+        public void Display()
+        {
+            Console.WriteLine($"=====MIESTAS=====");
+            Console.WriteLine($"City Name: {Name}");
+            Console.WriteLine($"Population: {Population}");
+            Console.WriteLine($"Gold: {Gold}");
+            Console.WriteLine($"Happiness: {Happiness}");
+            Console.WriteLine($"=================");
+        }
     }
 }
