@@ -1,6 +1,6 @@
 namespace miesto_meras.Models
 {
-    public class Multichoice : IChoice
+    public class MultichoiceEvent : Event
     {
         
     }

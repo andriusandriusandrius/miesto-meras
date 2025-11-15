@@ -1,6 +1,6 @@
 namespace miesto_meras.Models
 {
-    public class OneChoice : IChoice
+    public class NoChoiceEvent :Event
     {
         
     }
