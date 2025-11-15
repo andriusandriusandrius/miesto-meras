@@ -1,10 +1,9 @@
 namespace miesto_meras.Models
 {
-    public class Event
+    public abstract class Event
     {
-        public int Id{get;set;}
-        public String? Title{get;set;}
-        public String? Description{get;set;}
-        public required IChoice Choice {get;set;}
+        public Guid Id{get;init;} = Guid.NewGuid();
+        public string? Title{get;set;}
+        public string? Description{get;set;}
     }
 }
