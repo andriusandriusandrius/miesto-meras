@@ -1,0 +1,35 @@
+[
+  {
+    "Title": "Maras",
+    "Description": "Į tavo miestą atkeliauja baisus maras",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Suteik ligoninei didesnį finansavimą (-50 Aukso)",
+        "Effects": {
+          "Gold": -50,
+          "Population": -5,
+          "Happiness": -5
+        }
+      },
+      {
+        "Id": 2,
+        "Text": "Skelbk karantiną (-10 Aukso)",
+        "Effects": {
+          "Gold": -10,
+          "Population": -10,
+          "Happiness": -30
+        }
+      },
+      {
+        "Id": 3,
+        "Text": "Nieko nedaryk",
+        "Effects": {
+          "Gold": 0,
+          "Population": -50,
+          "Happiness": -50
+        }
+      }
+    ]
+  }
+]

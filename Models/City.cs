@@ -4,9 +4,11 @@ namespace miesto_meras.Models{
         public Guid Id {get;init;} = Guid.NewGuid();
         public string? Name {get;set;}
         public int Population {get;set;}
-        public double Gold {get;set;}
+        public int Gold {get;set;}
         public int Happiness{get;set;}
-        public City(string Name, int Population, double Gold, int Happiness )
+        
+        public List<GameEvent> GameEvents{get;set;} = new();
+        public City(string Name, int Population, int Gold, int Happiness )
         {
             this.Name = Name;
             this.Population = Population;

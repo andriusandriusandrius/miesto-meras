@@ -2,13 +2,13 @@ using miesto_meras.Models;
 
 namespace miesto_meras.Controllers
 {
-    public class TurnController
+    public class TurnService
     {
-        private int TurnNumber{get;set;} = 1;
+        private int TurnNumber = 1;
 
         private readonly City _city;
 
-        public TurnController(City city)
+        public TurnService(City city)
         {
             _city = city;
         }
@@ -23,7 +23,6 @@ namespace miesto_meras.Controllers
             Console.WriteLine("");
             while  (maxTurns >= TurnNumber)
             {
-
                 Console.WriteLine($"Turn {TurnNumber}:");
                 _city.Display();
                 PlayerInput();
