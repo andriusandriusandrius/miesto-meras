@@ -1,6 +1,7 @@
 namespace miesto_meras.Models{
     public class City
     {
+        public Guid Id {get;init;} = Guid.NewGuid();
         public string? Name {get;set;}
         public int Population {get;set;}
         public double Gold {get;set;}
