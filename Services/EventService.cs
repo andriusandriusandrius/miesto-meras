@@ -21,10 +21,12 @@ namespace miesto_meras.Services
                 Description = e.Description,
                 Choices = e.Choices.Select(c=> new EventChoice
                 {
+                    
                     Id = c.Id,
                     Text = c.Text,
                     ApplyEffect = city =>
                     {
+                        
                         foreach(var effect in c.Effects)
                         {
                             switch (effect.Key)
@@ -41,21 +43,44 @@ namespace miesto_meras.Services
             city.GameEvents = gameEvents;
         }
         
-        public void ApplyEvent(GameEvent gameEvent)
+        public void ApplyEvent(GameEvent gameEvent, City city)
         {
             Console.WriteLine(gameEvent.Title);
             Console.WriteLine(gameEvent.Description);
+
+            string inputCommunication = $"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}";
 
             foreach(var choice in gameEvent.Choices)
             {
                 Console.Write($"{choice.Text}; ");
             }
+
+            while(true){
+                Console.WriteLine(inputCommunication);
+
+                string playerChoiceString =  Console.ReadLine() ?? "";
+                int playerChoice;
+
+                if(Int32.TryParse(playerChoiceString, out playerChoice))
+                {
+                   if(playerChoice>= 1 && playerChoice <= gameEvent.Choices.Count)
+                    {
+
+                        gameEvent.Choices[playerChoice-1].ApplyEffect(city);
+                    
+                        break;
+                    }
+              
+                    
+                }
+                continue;
+            }
         }
-        public void ApplyRandomEvent(List<GameEvent> gameEvents)
+        public void ApplyRandomEvent(City city)
         {
            Random rnd = new Random();
-           int index = rnd.Next(gameEvents.Count);
-           ApplyEvent(gameEvents[index]);
+           int index = rnd.Next(city.GameEvents.Count);
+           ApplyEvent(city.GameEvents[index], city);
         }
     }
 }

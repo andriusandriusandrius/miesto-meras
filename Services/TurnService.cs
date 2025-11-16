@@ -15,11 +15,7 @@ namespace miesto_meras.Services
             _city = city;
             _eventService = eventService;
         }
-        private void PlayerInput()
-        {
-            Console.WriteLine("Your Turn:");
-            Console.ReadLine();
-        }
+       
         public void RunTurns(int maxTurns)
         {
             _eventService.ReadEventsFromJson(_city);
@@ -29,9 +25,10 @@ namespace miesto_meras.Services
             while  (maxTurns >= TurnNumber)
             {
                 Console.WriteLine($"Turn {TurnNumber}:");
+                
                 _city.Display();
-                _eventService.ApplyRandomEvent(_city.GameEvents);
-                PlayerInput();
+                _eventService.ApplyRandomEvent(_city);
+
                 TurnNumber++;
             }
             Console.WriteLine("===== ZAIDIMAS 'MIESTO MERAS' PASIBAIGĖ =====");
