@@ -4,6 +4,6 @@ namespace miesto_meras.ParseClasses
     {
         public int Id {get;set;}
         public string Text {get;set;} = String.Empty;
-        public Dictionary<string,int> Effects = new();
+        public Dictionary<string,int> Effects{get;set;} = new();
     }
 }
