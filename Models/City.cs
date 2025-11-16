@@ -22,7 +22,8 @@ namespace miesto_meras.Models{
             Console.WriteLine($"Population: {Population}");
             Console.WriteLine($"Gold: {Gold}");
             Console.WriteLine($"Happiness: {Happiness}");
-            Console.WriteLine($"=================");
+            Console.WriteLine($"=================\n");
         }
+
     }
 }

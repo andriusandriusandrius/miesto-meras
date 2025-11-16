@@ -56,6 +56,7 @@ namespace miesto_meras.Services
             }
 
             while(true){
+                
                 Console.WriteLine(inputCommunication);
 
                 string playerChoiceString =  Console.ReadLine() ?? "";
