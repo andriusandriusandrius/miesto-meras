@@ -1,8 +1,9 @@
-﻿using miesto_meras.Controllers;
+﻿using miesto_meras.Services;
 using miesto_meras.Models;
 
 City city = new("Siauliai", 40, 80, 10);
 
-TurnController turnController = new(city);
+EventService eventService = new();
+TurnService turnService = new(city, eventService);
 
-turnController.RunTurns(10);
+turnService.RunTurns(10);
