@@ -8,6 +8,7 @@ namespace miesto_meras.Models{
         public int Happiness{get;set;}
         
         public List<GameEvent> GameEvents{get;set;} = new();
+        public Dictionary<string, int> Buildings{get;set;} = new();
         public City(string Name, int Population, int Gold, int Happiness )
         {
             this.Name = Name;
@@ -18,10 +19,14 @@ namespace miesto_meras.Models{
         public void Display()
         {
             Console.WriteLine($"=====MIESTAS=====");
-            Console.WriteLine($"City Name: {Name}");
-            Console.WriteLine($"Population: {Population}");
-            Console.WriteLine($"Gold: {Gold}");
-            Console.WriteLine($"Happiness: {Happiness}");
+            Console.WriteLine($"Miesto pavadinimas: {Name}");
+            Console.WriteLine($"Populiacija: {Population}");
+            Console.WriteLine($"Auksas: {Gold}");
+            Console.WriteLine($"Laimė: {Happiness}");
+            foreach(var building in Buildings)
+            {
+                Console.WriteLine($"{building.Key}: {building.Value}");
+            }
             Console.WriteLine($"=================\n");
         }
 
