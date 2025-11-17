@@ -15,8 +15,9 @@ namespace miesto_meras.Controllers
 
         public void RunGame()
         {
+
             int turn = 1;
-            turnService.StartGame();
+            Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
 
             while(maxTurns>=turn){
                 turnService.RunTurn(turn);
