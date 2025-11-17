@@ -7,11 +7,13 @@ namespace miesto_meras.Services
     {
         private readonly Player player;
         private readonly EventService eventService;
+        private readonly BuildingService buildingService;
         public bool hasGameBeenLost{get;private set;} = false;
-        public TurnService(Player player, EventService eventService)
+        public TurnService(Player player, EventService eventService, BuildingService buildingService)
         {
             this.player =player;
             this.eventService = eventService;
+            this.buildingService = buildingService;
         }
         public void KillUnderperformingCity(List<City> cities)
         {
@@ -46,9 +48,11 @@ namespace miesto_meras.Services
             foreach(var city in player.Cities)
             {
                 city.Display();
+                buildingService.HandleBuildingPhase(city);
                 eventService.ApplyRandomEvent(city);
-               
+                buildingService.BuildingsAction(city);
             }
+            
             KillUnderperformingCity(player.Cities);
             hasGameBeenLost = !(player.Cities.Count>0);
             

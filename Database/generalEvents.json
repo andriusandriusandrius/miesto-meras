@@ -10,13 +10,18 @@
       },
       {
         "Id": 2,
-        "Text": "Skelbk karantiną (Aukso -10, Populiacijos -10, Laimės -30)",
-        "Effects": { "Gold": -10, "Population": -10, "Happiness": -30 }
+        "Text": "Skelbk karantiną (Aukso -10, Laimės -30)",
+        "Effects": { "Gold": -10, "Happiness": -30 }
       },
       {
         "Id": 3,
         "Text": "Nieko nedaryk (Aukso 0, Populiacijos -50, Laimės -50)",
         "Effects": { "Gold": 0, "Population": -50, "Happiness": -50 }
+      },
+      {
+        "Id": 4,
+        "Text": "Atsistadink (Aukso -1000, Populiacijos -1000, Laimės -1000)",
+        "Effects": { "Gold": -1000, "Population": -1000, "Happiness": -1000 }
       }
     ]
   },
