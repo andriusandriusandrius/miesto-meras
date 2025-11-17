@@ -5,30 +5,207 @@
     "Choices": [
       {
         "Id": 1,
-        "Text": "Suteik ligoninei didesnį finansavimą (-50 Aukso)",
-        "Effects": {
-          "Gold": -50,
-          "Population": -5,
-          "Happiness": -5
-        }
+        "Text": "Suteik ligoninei didesnį finansavimą (Aukso -50, Populiacijos -5, Laimės -5)",
+        "Effects": { "Gold": -50, "Population": -5, "Happiness": -5 }
       },
       {
         "Id": 2,
-        "Text": "Skelbk karantiną (-10 Aukso)",
-        "Effects": {
-          "Gold": -10,
-          "Population": -10,
-          "Happiness": -30
-        }
+        "Text": "Skelbk karantiną (Aukso -10, Populiacijos -10, Laimės -30)",
+        "Effects": { "Gold": -10, "Population": -10, "Happiness": -30 }
       },
       {
         "Id": 3,
-        "Text": "Nieko nedaryk",
-        "Effects": {
-          "Gold": 0,
-          "Population": -50,
-          "Happiness": -50
-        }
+        "Text": "Nieko nedaryk (Aukso 0, Populiacijos -50, Laimės -50)",
+        "Effects": { "Gold": 0, "Population": -50, "Happiness": -50 }
+      }
+    ]
+  },
+  {
+    "Title": "Festivalis",
+    "Description": "Mieste rengiamas didelis festivalis",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Finansuok festivalį (Aukso -30, Laimės +20)",
+        "Effects": { "Gold": -30, "Population": 0, "Happiness": 20 }
+      },
+      {
+        "Id": 2,
+        "Text": "Leisk festivalį nemokamai (Laimės +10)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 3,
+        "Text": "Atšauk festivalį (Laimės -5)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -5 }
+      }
+    ]
+  },
+  {
+    "Title": "Potvynis",
+    "Description": "Mieste kilo potvynis",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Statyk užtvanką (Aukso -40, Laimės +10)",
+        "Effects": { "Gold": -40, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 2,
+        "Text": "Evakuok gyventojus (Populiacijos -5, Laimės -20)",
+        "Effects": { "Gold": 0, "Population": -5, "Happiness": -20 }
+      },
+      {
+        "Id": 3,
+        "Text": "Nieko nedaryk (Populiacijos -50, Laimės -30)",
+        "Effects": { "Gold": 0, "Population": -50, "Happiness": -30 }
+      }
+    ]
+  },
+  {
+    "Title": "Banko krizė",
+    "Description": "Bankas mieste žlunga",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Gelbėk banką (Aukso -50, Laimės +5)",
+        "Effects": { "Gold": -50, "Population": 0, "Happiness": 5 }
+      },
+      {
+        "Id": 2,
+        "Text": "Leisk bankui žlugti (Laimės -20)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -20 }
+      },
+      {
+        "Id": 3,
+        "Text": "Investuok savarankiškai (Aukso -30, Laimės +10)",
+        "Effects": { "Gold": -30, "Population": 0, "Happiness": 10 }
+      }
+    ]
+  },
+  {
+    "Title": "Gaisras",
+    "Description": "Mieste kilo gaisras",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Siųsk ugniagesius (Aukso -20, Laimės +10)",
+        "Effects": { "Gold": -20, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 2,
+        "Text": "Neblaivyk miesto (Populiacijos -10, Laimės -20)",
+        "Effects": { "Gold": 0, "Population": -10, "Happiness": -20 }
+      },
+      {
+        "Id": 3,
+        "Text": "Ignoruok problemą (Populiacijos -30, Laimės -30)",
+        "Effects": { "Gold": 0, "Population": -30, "Happiness": -30 }
+      }
+    ]
+  },
+  {
+    "Title": "Saulės energija",
+    "Description": "Tavo miestas gali investuoti į saulės energiją",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Statyk saulės jėgaines (Aukso -40, Laimės +10)",
+        "Effects": { "Gold": -40, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 2,
+        "Text": "Neinvestuok (Laimės -5)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -5 }
+      },
+      {
+        "Id": 3,
+        "Text": "Ieškok partnerių (Aukso -10, Laimės +5)",
+        "Effects": { "Gold": -10, "Population": 0, "Happiness": 5 }
+      }
+    ]
+  },
+  {
+    "Title": "Gyventojų badas",
+    "Description": "Mieste kilo maisto trūkumas",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Siųsk maistą (Aukso -20, Laimės +10)",
+        "Effects": { "Gold": -20, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 2,
+        "Text": "Leisk badui tęstis (Populiacijos -15, Laimės -20)",
+        "Effects": { "Gold": 0, "Population": -15, "Happiness": -20 }
+      },
+      {
+        "Id": 3,
+        "Text": "Organizuok paramą iš kaimynų (Aukso -10, Populiacijos -5, Laimės +5)",
+        "Effects": { "Gold": -10, "Population": -5, "Happiness": 5 }
+      }
+    ]
+  },
+  {
+    "Title": "Nauja mokykla",
+    "Description": "Galite statyti naują mokyklą mieste",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Statyk mokyklą (Aukso -30, Laimės +15)",
+        "Effects": { "Gold": -30, "Population": 0, "Happiness": 15 }
+      },
+      {
+        "Id": 2,
+        "Text": "Neinvestuok (Laimės -5)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -5 }
+      },
+      {
+        "Id": 3,
+        "Text": "Gauk privačių rėmėjų (Aukso -10, Laimės +5)",
+        "Effects": { "Gold": -10, "Population": 0, "Happiness": 5 }
+      }
+    ]
+  },
+  {
+    "Title": "Transporto problemos",
+    "Description": "Mieste susidarė transporto spūstys",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Statyk naujus kelius (Aukso -25, Laimės +10)",
+        "Effects": { "Gold": -25, "Population": 0, "Happiness": 10 }
+      },
+      {
+        "Id": 2,
+        "Text": "Neinvestuok (Laimės -10)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -10 }
+      },
+      {
+        "Id": 3,
+        "Text": "Pagerink viešąjį transportą (Aukso -15, Laimės +5)",
+        "Effects": { "Gold": -15, "Population": 0, "Happiness": 5 }
+      }
+    ]
+  },
+  {
+    "Title": "Gamtos parkas",
+    "Description": "Galite įkurti naują parką mieste",
+    "Choices": [
+      {
+        "Id": 1,
+        "Text": "Statyk parką (Aukso -20, Laimės +15)",
+        "Effects": { "Gold": -20, "Population": 0, "Happiness": 15 }
+      },
+      {
+        "Id": 2,
+        "Text": "Neinvestuok (Laimės -5)",
+        "Effects": { "Gold": 0, "Population": 0, "Happiness": -5 }
+      },
+      {
+        "Id": 3,
+        "Text": "Gauk privačių rėmėjų (Aukso -10, Laimės +5)",
+        "Effects": { "Gold": -10, "Population": 0, "Happiness": 5 }
       }
     ]
   }

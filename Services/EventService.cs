@@ -17,7 +17,7 @@ namespace miesto_meras.Services
 
             List<GameEvent> gameEvents = rawEvents.Select(e=> new GameEvent
             {
-                Title = e.Title,
+                Title = e.Title.ToUpper(),
                 Description = e.Description,
                 Choices = e.Choices.Select(c=> new EventChoice
                 {
@@ -48,34 +48,31 @@ namespace miesto_meras.Services
             Console.WriteLine(gameEvent.Title);
             Console.WriteLine(gameEvent.Description);
 
-            string inputCommunication = $"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}";
-
             foreach(var choice in gameEvent.Choices)
             {
                 Console.Write($"{choice.Text}; ");
             }
 
+
             while(true){
                 
-                Console.WriteLine(inputCommunication);
+                Console.WriteLine($"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}");
 
                 string playerChoiceString =  Console.ReadLine() ?? "";
                 int playerChoice;
-
+                
                 if(Int32.TryParse(playerChoiceString, out playerChoice))
                 {
                    if(playerChoice>= 1 && playerChoice <= gameEvent.Choices.Count)
                     {
-
                         gameEvent.Choices[playerChoice-1].ApplyEffect(city);
-                    
                         break;
                     }
               
                     
                 }
-                continue;
             }
+             
         }
         public void ApplyRandomEvent(City city)
         {

@@ -13,17 +13,6 @@ namespace miesto_meras.Services
             this.player =player;
             this.eventService = eventService;
         }
-
-        public void StartGame()
-        {
-            foreach(City city in player.Cities)
-            {
-                eventService.ReadEventsFromJson(city);
-            }
-
-            Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
-        }
-  
         public void KillUnderperformingCity(List<City> cities)
         {
             var toRemove = new List<City>();

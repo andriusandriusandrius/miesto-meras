@@ -9,5 +9,6 @@
   </PropertyGroup>
    <ItemGroup>
       <None Include="Database/generalEvents.json" CopyToOutputDirectory="Always" />
+      <None Include="Database/cities.json" CopyToOutputDirectory="Always" />
     </ItemGroup>
 </Project>
