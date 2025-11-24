@@ -49,8 +49,10 @@ namespace miesto_meras.Services
             {
                 city.Display();
                 buildingService.HandleBuildingPhase(city);
-                eventService.ApplyRandomEvent(city);
                 buildingService.BuildingsAction(city);
+                city.Display();
+                eventService.ApplyRandomEvent(city);
+                
             }
             
             KillUnderperformingCity(player.Cities);

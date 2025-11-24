@@ -4,5 +4,11 @@
     "Population": 40,
     "Gold": 80,
     "Happiness": 10
+  },
+  {
+    "Name": "Vilnius",
+    "Population": 1000,
+    "Gold": 1000,
+    "Happiness": 1000
   }
 ]

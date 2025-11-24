@@ -11,7 +11,7 @@ namespace miesto_meras.Services
         
         public void ApplyEvent(GameEvent gameEvent, City city)
         {
-            Console.WriteLine(gameEvent.Title);
+            Console.WriteLine($"=={gameEvent.Title}==");
             Console.WriteLine(gameEvent.Description);
 
             foreach(var choice in gameEvent.Choices)

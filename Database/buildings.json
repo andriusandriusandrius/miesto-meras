@@ -1,24 +1,24 @@
 [
   {
     "Name": "Bankas",
-    "EffectDescription": "Suteikia +10 aukso per ėjimą. Kaina 50 aukso",
-    "Price": 50,
+    "EffectDescription": "Suteikia +10 aukso per ėjimą. Kaina 12 aukso",
+    "Price": 12,
     "Effects": {
       "Gold": 10
     }
   },
   {
     "Name": "Cirkas",
-    "EffectDescription": "Suteikia +8 laimės per ėjimą. Kaina 40 aukso",
-    "Price": 40,
+    "EffectDescription": "Suteikia +8 laimės per ėjimą. Kaina 10 aukso",
+    "Price": 10,
     "Effects": {
       "Happiness": 8
     }
   },
   {
     "Name": "Turistų lankytina vieta",
-    "EffectDescription": "Suteikia +5 populiacijos ir +2 laimės per ėjimą. Kaina 30 aukso",
-    "Price": 30,
+    "EffectDescription": "Suteikia +5 populiacijos ir +2 laimės per ėjimą. Kaina 20 aukso",
+    "Price": 20,
     "Effects": {
       "Population": 5,
       "Happiness": 2
