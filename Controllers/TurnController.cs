@@ -6,7 +6,7 @@ namespace miesto_meras.Controllers
         private readonly TurnService turnService;
         private readonly int maxTurns;
 
-        
+
         public TurnController(TurnService turnService, int maxTurns)
         {
             this.turnService = turnService;
@@ -19,15 +19,16 @@ namespace miesto_meras.Controllers
             int turn = 1;
             Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
 
-            while(maxTurns>=turn){
+            while (maxTurns >= turn)
+            {
                 turnService.RunTurn(turn);
-                if(turnService.hasGameBeenLost) break;
+                if (turnService.hasGameBeenLost) break;
                 turn++;
             }
-            if(turnService.hasGameBeenLost)
-            Console.WriteLine("ZAIDIMA PRALAIMEJAI");
+            if (turnService.hasGameBeenLost)
+                Console.WriteLine("ZAIDIMA PRALAIMEJAI");
             else
-            Console.WriteLine("ZAIDIMA LAIMEJAI");
+                Console.WriteLine("ZAIDIMA LAIMEJAI");
         }
     }
 }

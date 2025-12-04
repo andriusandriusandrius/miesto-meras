@@ -5,29 +5,30 @@ namespace miesto_meras.Services
     public class BuildingService
     {
         private readonly List<Building> availableBuildings;
-        public BuildingService(List<Building> availableBuildings){
+        public BuildingService(List<Building> availableBuildings)
+        {
             this.availableBuildings = availableBuildings;
         }
         public void HandleBuildingPhase(City city)
         {
-            
+
             Console.WriteLine("==PASTATŲ STATYMAS==\n");
             Console.WriteLine("Kuri pastatą norėtum pasistatyti?\n");
-            foreach(var element in availableBuildings)
+            foreach (var element in availableBuildings)
             {
                 Console.Write($"{element.Name}({element.EffectDescription}); ");
             }
 
             while (true)
-            {       
+            {
                 Console.WriteLine($"\nPasirink nuo 0 iki {availableBuildings.Count}:");
                 Console.WriteLine($"Pasirink 0 jeigu nenori nieko statyti");
                 string input = Console.ReadLine() ?? "";
-                
+
                 if (int.TryParse(input, out int choice))
                 {
                     if (choice == 0)
-                        return; 
+                        return;
 
                     if (choice >= 1 && choice <= availableBuildings.Count)
                     {
@@ -65,14 +66,14 @@ namespace miesto_meras.Services
                 Building? building = availableBuildings
                     .FirstOrDefault(b => b.Name == buildingName);
 
-                if (building == null) 
+                if (building == null)
                     continue;
 
                 for (int i = 0; i < count; i++)
                 {
                     building.ApplyEffect(city);
                 }
+            }
         }
-    }
     }
 }
