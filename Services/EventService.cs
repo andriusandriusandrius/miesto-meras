@@ -8,43 +8,44 @@ namespace miesto_meras.Services
 {
     public class EventService
     {
-        
+
         public void ApplyEvent(GameEvent gameEvent, City city)
         {
             Console.WriteLine($"=={gameEvent.Title}==");
             Console.WriteLine(gameEvent.Description);
 
-            foreach(var choice in gameEvent.Choices)
+            foreach (var choice in gameEvent.Choices)
             {
                 Console.Write($"{choice.Text}; ");
             }
 
 
-            while(true){
-                
+            while (true)
+            {
+
                 Console.WriteLine($"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}");
 
-                string playerChoiceString =  Console.ReadLine() ?? "";
+                string playerChoiceString = Console.ReadLine() ?? "";
                 int playerChoice;
-                
-                if(Int32.TryParse(playerChoiceString, out playerChoice))
+
+                if (Int32.TryParse(playerChoiceString, out playerChoice))
                 {
-                   if(playerChoice>= 1 && playerChoice <= gameEvent.Choices.Count)
+                    if (playerChoice >= 1 && playerChoice <= gameEvent.Choices.Count)
                     {
-                        gameEvent.Choices[playerChoice-1].ApplyEffect(city);
+                        gameEvent.Choices[playerChoice - 1].ApplyEffect(city);
                         break;
                     }
-              
-                    
+
+
                 }
             }
-             
+
         }
         public void ApplyRandomEvent(City city)
         {
-           Random rnd = new Random();
-           int index = rnd.Next(city.GameEvents.Count);
-           ApplyEvent(city.GameEvents[index], city);
+            Random rnd = new Random();
+            int index = rnd.Next(city.GameEvents.Count);
+            ApplyEvent(city.GameEvents[index], city);
         }
     }
 }

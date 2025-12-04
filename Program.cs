@@ -13,7 +13,7 @@ foreach (var city in cities)
 {
     city.GameEvents = gameEvents;
 
-    foreach(var building in buildings)
+    foreach (var building in buildings)
     {
         city.Buildings[building.Name] = 0;
     }
@@ -21,12 +21,12 @@ foreach (var city in cities)
 
 
 
-Player player = new();
-player.Cities = cities;
+Player player = new(cities);
+
 
 
 EventService eventService = new();
 BuildingService buildingService = new(buildings);
-TurnService turnService = new(player, eventService,buildingService);
+TurnService turnService = new(player, eventService, buildingService);
 TurnController turnController = new(turnService, maxTurns);
 turnController.RunGame();

@@ -1,20 +1,57 @@
-namespace miesto_meras.Models{
+namespace miesto_meras.Models
+{
     public class City
     {
-        public Guid Id {get;init;} = Guid.NewGuid();
-        public string? Name {get;set;}
-        public int Population {get;set;}
-        public int Gold {get;set;}
-        public int Happiness{get;set;}
-        
-        public List<GameEvent> GameEvents{get;set;} = new();
-        public Dictionary<string, int> Buildings{get;set;} = new();
-        public City(string Name, int Population, int Gold, int Happiness )
+        protected string _name;
+        public string Name
         {
-            this.Name = Name;
-            this.Population = Population;
-            this.Gold = Gold;
-            this.Happiness = Happiness;
+            get => _name;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("A name cannot be null");
+                _name = value;
+            }
+        }
+        protected int _population;
+        public int Population
+        {
+            get => _population;
+            set
+            {
+                if (value <= 0) throw new ArgumentException("Population cannot be negative or 0");
+                _population = value;
+            }
+        }
+        protected int _gold;
+        public int Gold
+        {
+            get => _gold;
+            set
+            {
+                if (value <= 0) throw new ArgumentException("Gold cannot be negative or 0");
+                _gold = value;
+            }
+        }
+        protected int _happiness;
+        public int Happiness
+        {
+            get => _happiness;
+            set
+            {
+                if (value <= 0) throw new ArgumentException("Happiness cannot be negative or 0");
+                _happiness = value;
+            }
+
+        }
+
+        public List<GameEvent> GameEvents { get; set; } = new();
+        public Dictionary<string, int> Buildings { get; set; } = new();
+        public City(string Name, int Population, int Gold, int Happiness)
+        {
+            _name = Name;
+            _population = Population;
+            _gold = Gold;
+            _happiness = Happiness;
         }
         public void Display()
         {
@@ -23,7 +60,7 @@ namespace miesto_meras.Models{
             Console.WriteLine($"Populiacija: {Population}");
             Console.WriteLine($"Auksas: {Gold}");
             Console.WriteLine($"Laimė: {Happiness}");
-            foreach(var building in Buildings)
+            foreach (var building in Buildings)
             {
                 Console.WriteLine($"{building.Key}: {building.Value}");
             }

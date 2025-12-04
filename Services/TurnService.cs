@@ -8,21 +8,22 @@ namespace miesto_meras.Services
         private readonly Player player;
         private readonly EventService eventService;
         private readonly BuildingService buildingService;
-        public bool hasGameBeenLost{get;private set;} = false;
+        public bool hasGameBeenLost { get; private set; } = false;
         public TurnService(Player player, EventService eventService, BuildingService buildingService)
         {
-            this.player =player;
+            this.player = player;
             this.eventService = eventService;
             this.buildingService = buildingService;
         }
         public void KillUnderperformingCity(List<City> cities)
         {
             var toRemove = new List<City>();
-            foreach(var city in cities){
-                if(city.Gold <= 0)
+            foreach (var city in cities)
+            {
+                if (city.Gold <= 0)
                 {
                     Console.WriteLine($"{city.Name} bankrutavo.");
-                     toRemove.Add(city);
+                    toRemove.Add(city);
                 }
                 else if (city.Happiness <= 0)
                 {
@@ -32,32 +33,32 @@ namespace miesto_meras.Services
                 else if (city.Population <= 0)
                 {
                     Console.WriteLine($"{city.Name} mieste nebeliko piliečių");
-                     toRemove.Add(city);
+                    toRemove.Add(city);
                 }
             }
 
-            foreach(var city in toRemove)
+            foreach (var city in toRemove)
             {
                 cities.Remove(city);
             }
-            
+
         }
         public void RunTurn(int turn)
         {
             Console.WriteLine($"Turn: {turn}\n");
-            foreach(var city in player.Cities)
+            foreach (var city in player.Cities)
             {
                 city.Display();
                 buildingService.HandleBuildingPhase(city);
                 buildingService.BuildingsAction(city);
                 city.Display();
                 eventService.ApplyRandomEvent(city);
-                
+
             }
-            
+
             KillUnderperformingCity(player.Cities);
-            hasGameBeenLost = !(player.Cities.Count>0);
-            
+            hasGameBeenLost = !(player.Cities.Count > 0);
+
         }
     }
 }
