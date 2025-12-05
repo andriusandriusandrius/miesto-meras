@@ -1,5 +1,5 @@
 using miesto_meras.Models;
-
+using miesto_meras.Models.Buildings;
 namespace miesto_meras.Services
 {
     public class BuildingService

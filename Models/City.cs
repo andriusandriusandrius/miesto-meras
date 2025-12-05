@@ -46,12 +46,12 @@ namespace miesto_meras.Models
 
         public List<GameEvent> GameEvents { get; set; } = new();
         public Dictionary<string, int> Buildings { get; set; } = new();
-        public City(string Name, int Population, int Gold, int Happiness)
+        public City(string name, int population, int gold, int happiness)
         {
-            _name = Name;
-            _population = Population;
-            _gold = Gold;
-            _happiness = Happiness;
+            _name = name;
+            _population = population;
+            _gold = gold;
+            _happiness = happiness;
         }
         public void Display()
         {

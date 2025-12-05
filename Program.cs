@@ -2,12 +2,13 @@
 using miesto_meras.Models;
 using miesto_meras.Controllers;
 using miesto_meras.Utils;
+using miesto_meras.Models.Buildings;
 
 int maxTurns = 3;
 
 List<City> cities = JsonLoader.LoadCities();
 List<GameEvent> gameEvents = JsonLoader.LoadEvents();
-List<Building> buildings = JsonLoader.LoadAvailableBuildings();
+
 
 foreach (var city in cities)
 {

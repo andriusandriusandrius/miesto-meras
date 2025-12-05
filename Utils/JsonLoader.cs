@@ -1,7 +1,7 @@
 using System.Text.Json;
 using miesto_meras.Models;
 using miesto_meras.ParseClasses;
-
+using miesto_meras.Models.Buildings;
 namespace miesto_meras.Utils
 {
     public class JsonLoader
@@ -38,15 +38,6 @@ namespace miesto_meras.Utils
             List<GameEvent> gameEvents = rawEvents.Select(e => new GameEvent(e.Title, e.Description, e.Choices.Select(c => new EventChoice(c.Id, c.Text, BuildEffectAction(c.Effects))).ToList())).ToList();
 
             return gameEvents;
-        }
-        public static List<Building> LoadAvailableBuildings()
-        {
-            string path = Path.Combine(AppContext.BaseDirectory, "Database/buildings.json");
-            string json = File.ReadAllText(path);
-            var rawBuildings = JsonSerializer.Deserialize<List<JsonBuilding>>(json) ?? throw new ArgumentNullException("unable to parse building json correctly");
-            List<Building> buildings = rawBuildings.Select(b => new Building(b.Name, b.EffectDescription, b.Price, BuildEffectAction(b.Effects))).ToList();
-
-            return buildings;
         }
     }
 

@@ -1,0 +1,69 @@
+namespace miesto_meras.Models.Buildings
+{
+    public abstract class Building
+    {
+        protected string _name;
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("A name cannot be null");
+                _name = value;
+            }
+        }
+        protected string _effectDescription;
+        public string EffectDescription
+        {
+            get => _effectDescription;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("An effect description cannot be null");
+                _effectDescription = value;
+            }
+        }
+        protected int _price;
+
+        public int Price
+        {
+            get => _price;
+            set
+            {
+                if (value <= 0) throw new ArgumentException("Price cannot be negative or 0");
+                _price = value;
+            }
+        }
+        protected readonly IBuildBehaviour _buildBehaviour;
+        protected readonly IBuildingOneTimeEffect _oneTimeEffect;
+        protected readonly IBuildingPerTurnEffect _perTurnEffect;
+
+        public void Build(City city)
+        {
+            city.Buildings[_name] = city.Buildings.GetValueOrDefault(_name) + 1;
+            _buildBehaviour.Build(city);
+            Console.WriteLine($"A {_name} was built.");
+        }
+        public void ApplyOneTimeEffect(City city)
+        {
+
+            _oneTimeEffect.Apply(city);
+            Console.WriteLine($"{_name} one-time effect applied.");
+        }
+        public void ApplyPerTurnEffect(City city)
+        {
+            _perTurnEffect.Apply(city);
+            Console.WriteLine($"{_name} per-turn effect applied");
+        }
+
+        public Building(string name, string effectDescription, int price, IBuildBehaviour buildBehaviour, IBuildingOneTimeEffect oneTimeEffect, IBuildingPerTurnEffect perTurnEffect)
+        {
+            _name = name;
+            _effectDescription = effectDescription;
+            _price = price;
+            _buildBehaviour = buildBehaviour;
+            _oneTimeEffect = oneTimeEffect;
+            _perTurnEffect = perTurnEffect;
+        }
+
+    }
+}
