@@ -9,25 +9,18 @@ int maxTurns = 3;
 List<City> cities = JsonLoader.LoadCities();
 List<GameEvent> gameEvents = JsonLoader.LoadEvents();
 
-
 foreach (var city in cities)
 {
-    city.GameEvents = gameEvents;
-
-    foreach (var building in buildings)
+    foreach (var gameEvent in gameEvents)
     {
-        city.Buildings[building.Name] = 0;
+        city.AddGameEvent(gameEvent);
     }
 }
 
-
-
 Player player = new(cities);
-
-
-
 EventService eventService = new();
-BuildingService buildingService = new(buildings);
+BuildingService buildingService = new();
 TurnService turnService = new(player, eventService, buildingService);
 TurnController turnController = new(turnService, maxTurns);
+
 turnController.RunGame();

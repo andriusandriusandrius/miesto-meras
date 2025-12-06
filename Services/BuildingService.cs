@@ -4,24 +4,21 @@ namespace miesto_meras.Services
 {
     public class BuildingService
     {
-        private readonly List<Building> availableBuildings;
-        public BuildingService(List<Building> availableBuildings)
-        {
-            this.availableBuildings = availableBuildings;
-        }
         public void HandleBuildingPhase(City city)
         {
 
             Console.WriteLine("==PASTATŲ STATYMAS==\n");
             Console.WriteLine("Kuri pastatą norėtum pasistatyti?\n");
-            foreach (var element in availableBuildings)
+            List<Building> availableBuildings = new();
+            foreach (var keyValuePair in city.Buildings)
             {
-                Console.Write($"{element.Name}({element.EffectDescription}); ");
+                availableBuildings.Add(keyValuePair.Value);
+                Console.Write($"{keyValuePair.Key}({keyValuePair.Value.EffectDescription}); ");
             }
 
             while (true)
             {
-                Console.WriteLine($"\nPasirink nuo 0 iki {availableBuildings.Count}:");
+                Console.WriteLine($"\nPasirink nuo 0 iki {city.Buildings.Count}:");
                 Console.WriteLine($"Pasirink 0 jeigu nenori nieko statyti");
                 string input = Console.ReadLine() ?? "";
 
@@ -30,7 +27,7 @@ namespace miesto_meras.Services
                     if (choice == 0)
                         return;
 
-                    if (choice >= 1 && choice <= availableBuildings.Count)
+                    if (choice >= 1 && choice <= city.Buildings.Count)
                     {
                         Building selected = availableBuildings[choice - 1];
                         if (city.Gold < selected.Price)
@@ -38,14 +35,9 @@ namespace miesto_meras.Services
                             Console.WriteLine("Neturi pakankamai aukso!");
                             continue;
                         }
-                        city.Gold -= selected.Price;
 
-                        if (!city.Buildings.ContainsKey(selected.Name))
-                        {
-                            city.Buildings[selected.Name] = 0;
-                        }
 
-                        city.Buildings[selected.Name]++;
+                        selected.AddBuilding(1);
 
                         Console.WriteLine($"{selected.Name} pastatytas sėkmingai!");
                         return;
@@ -56,23 +48,18 @@ namespace miesto_meras.Services
             }
 
         }
-        public void BuildingsAction(City city)
+        public void BuildingsActionPerTurn(City city)
         {
             foreach (var element in city.Buildings)
             {
-                string buildingName = element.Key;
-                int count = element.Value;
+                Building building = element.Value;
 
-                Building? building = availableBuildings
-                    .FirstOrDefault(b => b.Name == buildingName);
 
-                if (building == null)
+                if (building == null || building.Count == 0)
                     continue;
 
-                for (int i = 0; i < count; i++)
-                {
-                    building.ApplyEffect(city);
-                }
+                building.ApplyPerTurnEffect(city, building.Count);
+
             }
         }
     }

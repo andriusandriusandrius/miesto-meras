@@ -6,5 +6,6 @@ namespace miesto_meras.ParseClasses
         public int Population { get; set; }
         public int Gold { get; set; }
         public int Happiness { get; set; }
+        public string[] AvailableBuildings { get; set; } = [];
     }
 }

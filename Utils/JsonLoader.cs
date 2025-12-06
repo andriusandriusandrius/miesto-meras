@@ -1,7 +1,6 @@
 using System.Text.Json;
 using miesto_meras.Models;
 using miesto_meras.ParseClasses;
-using miesto_meras.Models.Buildings;
 namespace miesto_meras.Utils
 {
     public class JsonLoader
@@ -26,7 +25,21 @@ namespace miesto_meras.Utils
             string path = Path.Combine(AppContext.BaseDirectory, "Database/cities.json");
             var json = File.ReadAllText(path);
             var rawCities = JsonSerializer.Deserialize<List<JsonCity>>(json) ?? throw new ArgumentNullException("unable to parse city json correctly");
-            List<City> cities = rawCities.Select(e => new City(e.Name, e.Population, e.Gold, e.Happiness)).ToList();
+            List<City> cities = new List<City>();
+
+            foreach (var e in rawCities)
+            {
+                City city = new City(e.Name, e.Population, e.Gold, e.Happiness);
+
+                foreach (var buildingName in e.AvailableBuildings)
+                {
+
+                    city.AddAvailableBuilding(buildingName);
+                }
+
+                cities.Add(city);
+            }
+
             return cities;
         }
         public static List<GameEvent> LoadEvents()

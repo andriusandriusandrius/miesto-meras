@@ -2,10 +2,10 @@ namespace miesto_meras.Models.Buildings
 {
     public class BankBuildBehaviour : IBuildBehaviour
     {
-        public void Build(City city)
+        public void Build(City city, int price)
         {
 
-            city.Gold -= 50;
+            city.Gold -= price;
         }
     }
     public class BankOneTimeEffect : IBuildingOneTimeEffect
@@ -17,9 +17,9 @@ namespace miesto_meras.Models.Buildings
     }
     public class BankPerTurnEffect : IBuildingPerTurnEffect
     {
-        public void Apply(City city)
+        public void Apply(City city, int count)
         {
-            city.Gold += 20;
+            city.Gold += 20 * count;
         }
     }
     public class Bank : Building

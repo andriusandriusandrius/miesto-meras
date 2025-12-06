@@ -50,7 +50,7 @@ namespace miesto_meras.Services
             {
                 city.Display();
                 buildingService.HandleBuildingPhase(city);
-                buildingService.BuildingsAction(city);
+                buildingService.BuildingsActionPerTurn(city);
                 city.Display();
                 eventService.ApplyRandomEvent(city);
 

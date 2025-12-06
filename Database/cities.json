@@ -3,7 +3,8 @@
     "Name": "Siauliai",
     "Population": 40,
     "Gold": 80,
-    "Happiness": 10
+    "Happiness": 10,
+    "AvailableBuildings":[]
   },
   {
     "Name": "Vilnius",
