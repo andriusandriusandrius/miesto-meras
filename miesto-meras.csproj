@@ -10,6 +10,5 @@
    <ItemGroup>
       <None Include="Database/generalEvents.json" CopyToOutputDirectory="Always" />
       <None Include="Database/cities.json" CopyToOutputDirectory="Always" />
-      <None Include="Database/buildings.json" CopyToOutputDirectory="Always" />
     </ItemGroup>
 </Project>

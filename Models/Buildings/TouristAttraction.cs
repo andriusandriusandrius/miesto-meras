@@ -1,0 +1,41 @@
+namespace miesto_meras.Models.Buildings
+{
+    public class TouristAttractionBuildBehaviour : IBuildBehaviour
+    {
+        public void Build(City city, int price)
+        {
+            city.Gold -= price;
+        }
+    }
+
+    public class TouristAttractionOneTimeEffect : IBuildingOneTimeEffect
+    {
+        public void Apply(City city)
+        {
+            city.Population += 5;
+        }
+    }
+
+    public class TouristAttractionPerTurnEffect : IBuildingPerTurnEffect
+    {
+        public void Apply(City city, int count)
+        {
+            city.Happiness += 2 * count;
+        }
+    }
+
+    public class TouristAttraction : Building
+    {
+        public TouristAttraction()
+            : base(
+                name: "TouristAttraction",
+                effectDescription: "Suteikia +5 populiacijos ir +2 laimės per ėjimą. Kaina 20 aukso",
+                price: 20,
+                buildBehaviour: new TouristAttractionBuildBehaviour(),
+                oneTimeEffect: new TouristAttractionOneTimeEffect(),
+                perTurnEffect: new TouristAttractionPerTurnEffect()
+            )
+        {
+        }
+    }
+}

@@ -1,7 +1,6 @@
 using System.Text.Json;
 using miesto_meras.Models;
 using miesto_meras.ParseClasses;
-
 namespace miesto_meras.Utils
 {
     public class JsonLoader
@@ -26,7 +25,21 @@ namespace miesto_meras.Utils
             string path = Path.Combine(AppContext.BaseDirectory, "Database/cities.json");
             var json = File.ReadAllText(path);
             var rawCities = JsonSerializer.Deserialize<List<JsonCity>>(json) ?? throw new ArgumentNullException("unable to parse city json correctly");
-            List<City> cities = rawCities.Select(e => new City(e.Name, e.Population, e.Gold, e.Happiness)).ToList();
+            List<City> cities = new List<City>();
+
+            foreach (var e in rawCities)
+            {
+                City city = new City(e.Name, e.Population, e.Gold, e.Happiness);
+
+                foreach (var buildingName in e.AvailableBuildings)
+                {
+
+                    city.AddAvailableBuilding(buildingName);
+                }
+
+                cities.Add(city);
+            }
+
             return cities;
         }
         public static List<GameEvent> LoadEvents()
@@ -38,15 +51,6 @@ namespace miesto_meras.Utils
             List<GameEvent> gameEvents = rawEvents.Select(e => new GameEvent(e.Title, e.Description, e.Choices.Select(c => new EventChoice(c.Id, c.Text, BuildEffectAction(c.Effects))).ToList())).ToList();
 
             return gameEvents;
-        }
-        public static List<Building> LoadAvailableBuildings()
-        {
-            string path = Path.Combine(AppContext.BaseDirectory, "Database/buildings.json");
-            string json = File.ReadAllText(path);
-            var rawBuildings = JsonSerializer.Deserialize<List<JsonBuilding>>(json) ?? throw new ArgumentNullException("unable to parse building json correctly");
-            List<Building> buildings = rawBuildings.Select(b => new Building(b.Name, b.EffectDescription, b.Price, BuildEffectAction(b.Effects))).ToList();
-
-            return buildings;
         }
     }
 

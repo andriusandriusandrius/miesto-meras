@@ -25,11 +25,11 @@ namespace miesto_meras.Models
         }
         public List<EventChoice> Choices { get; } = new();
 
-        public GameEvent(string Title, string Description, List<EventChoice> Choices)
+        public GameEvent(string title, string description, List<EventChoice> choices)
         {
-            _title = Title;
-            _description = Description;
-            this.Choices = Choices;
+            _title = title;
+            _description = description;
+            Choices = choices;
 
         }
     }

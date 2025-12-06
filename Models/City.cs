@@ -1,3 +1,5 @@
+using miesto_meras.Models.Buildings;
+
 namespace miesto_meras.Models
 {
     public class City
@@ -18,7 +20,6 @@ namespace miesto_meras.Models
             get => _population;
             set
             {
-                if (value <= 0) throw new ArgumentException("Population cannot be negative or 0");
                 _population = value;
             }
         }
@@ -28,7 +29,6 @@ namespace miesto_meras.Models
             get => _gold;
             set
             {
-                if (value <= 0) throw new ArgumentException("Gold cannot be negative or 0");
                 _gold = value;
             }
         }
@@ -38,20 +38,37 @@ namespace miesto_meras.Models
             get => _happiness;
             set
             {
-                if (value <= 0) throw new ArgumentException("Happiness cannot be negative or 0");
                 _happiness = value;
             }
 
         }
 
-        public List<GameEvent> GameEvents { get; set; } = new();
-        public Dictionary<string, int> Buildings { get; set; } = new();
-        public City(string Name, int Population, int Gold, int Happiness)
+        private readonly List<GameEvent> _gameEvents = new();
+        public IReadOnlyList<GameEvent> GameEvents => _gameEvents;
+
+        private readonly Dictionary<string, Building> _buildings = new();
+        public IReadOnlyDictionary<string, Building> Buildings => _buildings;
+
+        public void AddBuilding(string buildingName, int amount = 1)
         {
-            _name = Name;
-            _population = Population;
-            _gold = Gold;
-            _happiness = Happiness;
+            _buildings[buildingName].AddBuilding(amount);
+        }
+        public void AddAvailableBuilding(string buildingName)
+        {
+            _buildings[buildingName] = BuildingFactory.Create(buildingName);
+        }
+
+        public void AddGameEvent(GameEvent e)
+        {
+            _gameEvents.Add(e);
+        }
+
+        public City(string name, int population, int gold, int happiness)
+        {
+            _name = name;
+            _population = population;
+            _gold = gold;
+            _happiness = happiness;
         }
         public void Display()
         {
