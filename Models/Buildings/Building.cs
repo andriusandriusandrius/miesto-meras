@@ -49,14 +49,14 @@ namespace miesto_meras.Models.Buildings
             else
                 throw new ArgumentException($"Cant remove {difference} buildings since there are only {_count} of them ");
         }
-        public void AddBuilding(int difference)
+        public void AddBuilding()
         {
-            _count += difference;
+            _count += 1;
         }
 
         public void Build(City city)
         {
-            city.AddBuilding(_name);
+            AddBuilding();
             _buildBehaviour.Build(city, _price);
             Console.WriteLine($"A {_name} was built.");
         }

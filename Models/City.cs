@@ -49,10 +49,6 @@ namespace miesto_meras.Models
         private readonly Dictionary<string, Building> _buildings = new();
         public IReadOnlyDictionary<string, Building> Buildings => _buildings;
 
-        public void AddBuilding(string buildingName, int amount = 1)
-        {
-            _buildings[buildingName].AddBuilding(amount);
-        }
         public void AddAvailableBuilding(string buildingName)
         {
             _buildings[buildingName] = BuildingFactory.Create(buildingName);
