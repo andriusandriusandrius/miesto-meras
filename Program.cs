@@ -19,8 +19,7 @@ foreach (var city in cities)
 
 Player player = new(cities);
 EventService eventService = new();
-BuildingService buildingService = new();
-TurnService turnService = new(player, eventService, buildingService);
+TurnService turnService = new(player, eventService);
 TurnController turnController = new(turnService, maxTurns);
 
 turnController.RunGame();

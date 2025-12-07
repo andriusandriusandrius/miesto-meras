@@ -7,13 +7,11 @@ namespace miesto_meras.Services
     {
         private readonly Player player;
         private readonly EventService eventService;
-        private readonly BuildingService buildingService;
         public bool hasGameBeenLost { get; private set; } = false;
-        public TurnService(Player player, EventService eventService, BuildingService buildingService)
+        public TurnService(Player player, EventService eventService)
         {
             this.player = player;
             this.eventService = eventService;
-            this.buildingService = buildingService;
         }
         public void KillUnderperformingCity(List<City> cities)
         {

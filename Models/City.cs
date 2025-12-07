@@ -118,13 +118,10 @@ namespace miesto_meras.Models
         }
         public void HandleBuildingPhase()
         {
-
             DisplayBuyableBuildings();
-
             while (true)
             {
                 string input = Console.ReadLine() ?? "";
-
                 if (int.TryParse(input, out int choice))
                 {
                     if (choice == 0)
@@ -139,14 +136,11 @@ namespace miesto_meras.Models
                             Console.WriteLine("Neturi pakankamai aukso!");
                             continue;
                         }
-
                         AddBuilding(building);
-
                         Console.WriteLine($"{selected.Name} pastatytas sėkmingai!");
                         return;
                     }
                 }
-
                 Console.WriteLine("Neteisingas pasirinkimas, bandyk dar kartą.");
             }
 
