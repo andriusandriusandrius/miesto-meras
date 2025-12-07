@@ -37,26 +37,8 @@ namespace miesto_meras.Models.Buildings
         protected readonly IBuildingOneTimeEffect _oneTimeEffect;
         protected readonly IBuildingPerTurnEffect _perTurnEffect;
 
-        protected int _count = 0;
-        public int Count
-        {
-            get => _count;
-        }
-        public void RemoveBuilding(int difference)
-        {
-            if (_count >= difference)
-                _count -= difference;
-            else
-                throw new ArgumentException($"Cant remove {difference} buildings since there are only {_count} of them ");
-        }
-        public void AddBuilding()
-        {
-            _count += 1;
-        }
-
         public void Build(City city)
         {
-            AddBuilding();
             _buildBehaviour.Build(city, _price);
             Console.WriteLine($"A {_name} was built.");
         }
@@ -66,9 +48,9 @@ namespace miesto_meras.Models.Buildings
             _oneTimeEffect.Apply(city);
             Console.WriteLine($"{_name} one-time effect applied.");
         }
-        public void ApplyPerTurnEffect(City city, int _count)
+        public void ApplyPerTurnEffect(City city)
         {
-            _perTurnEffect.Apply(city, _count);
+            _perTurnEffect.Apply(city);
             Console.WriteLine($"{_name} per-turn effect applied");
         }
 

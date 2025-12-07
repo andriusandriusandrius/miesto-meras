@@ -1,12 +1,5 @@
 [
-  {
-    "Name": "Siauliai",
-    "Population": 40,
-    "Gold": 80,
-    "Happiness": 10,
-    "AvailableBuildings":[]
-  },
-  {
+   {
     "Name": "Vilnius",
     "Population": 1000,
     "Gold": 1000,
@@ -16,5 +9,12 @@
       "Bank",
       "TouristAttraction"
     ]
+  },
+  {
+    "Name": "Siauliai",
+    "Population": 40,
+    "Gold": 80,
+    "Happiness": 10,
+    "AvailableBuildings":[]
   }
 ]

@@ -46,13 +46,16 @@ namespace miesto_meras.Services
         public void RunTurn(int turn)
         {
             Console.WriteLine($"Turn: {turn}\n");
+
             foreach (var city in player.Cities)
             {
                 city.Display();
-                if (city.Buildings.Count > 0)
-                    buildingService.HandleBuildingPhase(city);
+                if (city.BuyableBuildings.Count > 0)
+                {
+                    city.HandleBuildingPhase();
+                }
 
-                buildingService.BuildingsActionPerTurn(city);
+                city.BuildingsActionsPerTurn();
                 eventService.ApplyRandomEvent(city);
 
             }

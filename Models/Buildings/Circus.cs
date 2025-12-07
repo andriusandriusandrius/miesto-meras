@@ -18,9 +18,9 @@ namespace miesto_meras.Models.Buildings
 
     public class CircusPerTurnEffect : IBuildingPerTurnEffect
     {
-        public void Apply(City city, int count)
+        public void Apply(City city)
         {
-            city.Happiness += 8 * count;
+            city.Happiness += 8;
         }
     }
 
