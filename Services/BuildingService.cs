@@ -10,10 +10,11 @@ namespace miesto_meras.Services
             Console.WriteLine("==PASTATŲ STATYMAS==\n");
             Console.WriteLine("Kuri pastatą norėtum pasistatyti?\n");
             List<Building> availableBuildings = new();
+
             foreach (var keyValuePair in city.Buildings)
             {
                 availableBuildings.Add(keyValuePair.Value);
-                Console.Write($"{keyValuePair.Key}({keyValuePair.Value.EffectDescription}); ");
+                Console.WriteLine($"{keyValuePair.Key}({keyValuePair.Value.EffectDescription}); ");
             }
 
             while (true)
@@ -36,8 +37,7 @@ namespace miesto_meras.Services
                             continue;
                         }
 
-
-                        selected.AddBuilding(1);
+                        selected.AddBuilding();
 
                         Console.WriteLine($"{selected.Name} pastatytas sėkmingai!");
                         return;

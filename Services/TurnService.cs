@@ -49,9 +49,10 @@ namespace miesto_meras.Services
             foreach (var city in player.Cities)
             {
                 city.Display();
-                buildingService.HandleBuildingPhase(city);
+                if (city.Buildings.Count > 0)
+                    buildingService.HandleBuildingPhase(city);
+
                 buildingService.BuildingsActionPerTurn(city);
-                city.Display();
                 eventService.ApplyRandomEvent(city);
 
             }
