@@ -1,5 +1,6 @@
 using System.Text.Json;
 using miesto_meras.Models;
+using miesto_meras.Models.Buildings;
 using miesto_meras.ParseClasses;
 namespace miesto_meras.Utils
 {
@@ -29,14 +30,15 @@ namespace miesto_meras.Utils
 
             foreach (var e in rawCities)
             {
-                City city = new City(e.Name, e.Population, e.Gold, e.Happiness);
-
+                List<BuyableBuildingInformation> buildingNames = new();
                 foreach (var buildingName in e.AvailableBuildings)
                 {
-
-                    city.AddAvailableBuilding(buildingName);
+                    Building building = BuildingFactory.Create(buildingName);
+                    BuyableBuildingInformation buildingInformation = new(building.Name, building.EffectDescription);
+                    buildingNames.Add(buildingInformation);
                 }
 
+                City city = new City(e.Name, e.Population, e.Gold, e.Happiness, buildingNames);
                 cities.Add(city);
             }
 

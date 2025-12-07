@@ -1,3 +1,4 @@
+using System.Numerics;
 using miesto_meras.Models.Buildings;
 
 namespace miesto_meras.Models
@@ -46,25 +47,36 @@ namespace miesto_meras.Models
         private readonly List<GameEvent> _gameEvents = new();
         public IReadOnlyList<GameEvent> GameEvents => _gameEvents;
 
-        private readonly Dictionary<string, Building> _buildings = new();
-        public IReadOnlyDictionary<string, Building> Buildings => _buildings;
+        private readonly Dictionary<string, List<Building>> _buildings = new();
+        public IReadOnlyDictionary<string, List<Building>> Buildings => _buildings;
 
-        public void AddAvailableBuilding(string buildingName)
-        {
-            _buildings[buildingName] = BuildingFactory.Create(buildingName);
-        }
+        private readonly List<BuyableBuildingInformation> _buyableBuildings;
+        public IReadOnlyList<BuyableBuildingInformation> BuyableBuildings => _buyableBuildings;
 
         public void AddGameEvent(GameEvent e)
         {
             _gameEvents.Add(e);
         }
+        public void AddBuilding(Building building)
+        {
+            if (_buildings.TryGetValue(building.Name, out var buildingsList))
+            {
+                buildingsList.Add(building);
+            }
+            else
+                _buildings.Add(building.Name, new List<Building> { building });
 
-        public City(string name, int population, int gold, int happiness)
+            building.Build(this);
+
+        }
+
+        public City(string name, int population, int gold, int happiness, List<BuyableBuildingInformation> buyableBuildingInformation)
         {
             _name = name;
             _population = population;
             _gold = gold;
             _happiness = happiness;
+            _buyableBuildings = buyableBuildingInformation;
         }
         public void Display()
         {
@@ -75,9 +87,69 @@ namespace miesto_meras.Models
             Console.WriteLine($"Laimė: {Happiness}");
             foreach (var building in Buildings)
             {
-                Console.WriteLine($"{building.Key}: {building.Value}");
+                Console.WriteLine($"{building.Key} - {building.Value.Count}");
             }
             Console.WriteLine($"=================\n");
+        }
+
+        public void DisplayBuyableBuildings()
+        {
+            Console.WriteLine($"=====PASIRINK PASTATA=====");
+            Console.WriteLine($"\nPasirink nuo 1 iki {BuyableBuildings.Count}:");
+            Console.WriteLine($"Pasirink 0 jeigu nenori nieko statyti\n");
+            int index = 1;
+            foreach (var buyableBuildingInformation in BuyableBuildings)
+            {
+                Console.WriteLine($"({index}) {buyableBuildingInformation.Name} - {buyableBuildingInformation.Description}");
+                index++;
+            }
+        }
+        public void BuildingsActionsPerTurn()
+        {
+            foreach (var element in Buildings)
+            {
+                var buildings = element.Value;
+                foreach (var building in buildings)
+                {
+                    building.ApplyPerTurnEffect(this);
+                }
+
+            }
+        }
+        public void HandleBuildingPhase()
+        {
+
+            DisplayBuyableBuildings();
+
+            while (true)
+            {
+                string input = Console.ReadLine() ?? "";
+
+                if (int.TryParse(input, out int choice))
+                {
+                    if (choice == 0)
+                        return;
+
+                    if (choice >= 1 && choice <= BuyableBuildings.Count)
+                    {
+                        BuyableBuildingInformation selected = BuyableBuildings[choice - 1];
+                        Building building = BuildingFactory.Create(selected.Name);
+                        if (Gold < building.Price)
+                        {
+                            Console.WriteLine("Neturi pakankamai aukso!");
+                            continue;
+                        }
+
+                        AddBuilding(building);
+
+                        Console.WriteLine($"{selected.Name} pastatytas sėkmingai!");
+                        return;
+                    }
+                }
+
+                Console.WriteLine("Neteisingas pasirinkimas, bandyk dar kartą.");
+            }
+
         }
 
     }

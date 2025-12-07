@@ -17,9 +17,9 @@ namespace miesto_meras.Models.Buildings
     }
     public class BankPerTurnEffect : IBuildingPerTurnEffect
     {
-        public void Apply(City city, int count)
+        public void Apply(City city)
         {
-            city.Gold += 20 * count;
+            city.Gold += 20;
         }
     }
     public class Bank : Building

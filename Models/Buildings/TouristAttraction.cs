@@ -18,9 +18,9 @@ namespace miesto_meras.Models.Buildings
 
     public class TouristAttractionPerTurnEffect : IBuildingPerTurnEffect
     {
-        public void Apply(City city, int count)
+        public void Apply(City city)
         {
-            city.Happiness += 2 * count;
+            city.Happiness += 2;
         }
     }
 
