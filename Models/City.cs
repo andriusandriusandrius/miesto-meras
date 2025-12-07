@@ -146,5 +146,43 @@ namespace miesto_meras.Models
 
         }
 
+        public void ApplyRandomEvent()
+        {
+            Random rnd = new Random();
+            int index = rnd.Next(GameEvents.Count);
+            ApplyEvent(GameEvents[index]);
+        }
+        public void ApplyEvent(GameEvent gameEvent)
+        {
+            Console.WriteLine($"=={gameEvent.Title}==");
+            Console.WriteLine(gameEvent.Description);
+
+            foreach (var choice in gameEvent.Choices)
+            {
+                Console.Write($"{choice.Text}; ");
+            }
+
+
+            while (true)
+            {
+
+                Console.WriteLine($"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}");
+
+                string playerChoiceString = Console.ReadLine() ?? "";
+                int playerChoice;
+
+                if (int.TryParse(playerChoiceString, out playerChoice))
+                {
+                    if (playerChoice >= 1 && playerChoice <= gameEvent.Choices.Count)
+                    {
+                        gameEvent.Choices[playerChoice - 1].ApplyEffect(this);
+                        break;
+                    }
+
+
+                }
+            }
+
+        }
     }
 }
