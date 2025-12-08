@@ -10,5 +10,7 @@
    <ItemGroup>
       <None Include="Database/generalEvents.json" CopyToOutputDirectory="Always" />
       <None Include="Database/cities.json" CopyToOutputDirectory="Always" />
+      <Compile Remove="miesto-meras.Tests/**/*.cs" />
+
     </ItemGroup>
 </Project>
