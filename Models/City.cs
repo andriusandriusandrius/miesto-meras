@@ -152,7 +152,7 @@ namespace miesto_meras.Models
             int index = rnd.Next(GameEvents.Count);
             ApplyEvent(GameEvents[index]);
         }
-        public void ApplyEvent(GameEvent gameEvent)
+        private void ApplyEvent(GameEvent gameEvent)
         {
             Console.WriteLine($"=={gameEvent.Title}==");
             Console.WriteLine(gameEvent.Description);
