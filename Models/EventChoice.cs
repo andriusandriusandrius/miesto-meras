@@ -6,8 +6,6 @@ namespace miesto_meras.Models
         public int Id
         {
             get => _id;
-
-
             set
             {
                 _id = value;
