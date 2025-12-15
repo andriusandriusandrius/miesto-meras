@@ -3,13 +3,11 @@ using miesto_meras.Models.Buildings;
 
 public class TestBuildBehaviour : ICostBehaviour
 {
-    public bool WasCalled = false;
     public City? LastCity;
     public int LastPrice;
 
     public void Build(City city, int price)
     {
-        WasCalled = true;
         LastCity = city;
         LastPrice = price;
     }
@@ -17,24 +15,20 @@ public class TestBuildBehaviour : ICostBehaviour
 
 public class TestOneTimeEffect : IBuildingOneTimeEffect
 {
-    public bool WasCalled = false;
     public City? LastCity;
 
     public void Apply(City city)
     {
-        WasCalled = true;
         LastCity = city;
     }
 }
 
 public class TestPerTurnEffect : IBuildingPerTurnEffect
 {
-    public bool WasCalled = false;
     public City? LastCity;
 
     public void Apply(City city)
     {
-        WasCalled = true;
         LastCity = city;
     }
 }
