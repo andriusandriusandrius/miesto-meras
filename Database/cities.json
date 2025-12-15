@@ -5,9 +5,9 @@
     "Gold": 1000,
     "Happiness": 1000,
     "AvailableBuildings":[
-      "Circus",
-      "Bank",
-      "TouristAttraction"
+      "Cirkas",
+      "Bankas",
+      "Turistų atrakcija"
     ]
   },
   {

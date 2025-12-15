@@ -36,9 +36,9 @@ public class CityTests
 
         _city.AddBuilding(building);
         Assert.That(_city.Buildings["Farm"].Count, Is.EqualTo(2));
-
         Assert.That(building.BuildMock.LastPrice, Is.EqualTo(building.Price));
         Assert.That(building.OneTimeMock.LastCity, Is.EqualTo(_city));
+        building.ApplyPerTurnEffect(_city);
         Assert.That(building.PerTurnMock.LastCity, Is.EqualTo(_city));
     }
 

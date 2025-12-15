@@ -28,7 +28,7 @@ namespace miesto_meras.Models.Buildings
     {
         public TouristAttraction()
             : base(
-                name: "TouristAttraction",
+                name: "Turistų atrakcija",
                 effectDescription: "Suteikia +50 populiacijos ir +2 laimės per ėjimą. Kaina 20 aukso",
                 price: 20,
                 buildBehaviour: new TouristAttractionBuildBehaviour(),
