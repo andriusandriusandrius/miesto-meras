@@ -160,27 +160,25 @@ namespace miesto_meras.Models
 
             foreach (var choice in gameEvent.Choices)
             {
-                Console.Write($"{choice.Text}; ");
+                Console.WriteLine($"({choice.Id}) {choice.Text}; ");
             }
 
 
             while (true)
             {
 
-                Console.WriteLine($"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}");
+                Console.WriteLine($"Pasirink tarp pasirinkimų");
 
                 string playerChoiceString = Console.ReadLine() ?? "";
-                int playerChoice;
 
-                if (int.TryParse(playerChoiceString, out playerChoice))
+                if (int.TryParse(playerChoiceString, out int playerChoice))
                 {
-                    if (playerChoice >= 1 && playerChoice <= gameEvent.Choices.Count)
+                    var choice = gameEvent.Choices.FirstOrDefault(c => c.Id == playerChoice);
+                    if (choice != null)
                     {
-                        gameEvent.Choices[playerChoice - 1].ApplyEffect(this);
+                        choice.ApplyEffect(this);
                         break;
                     }
-
-
                 }
             }
 
