@@ -2,7 +2,7 @@ namespace miesto_meras.Models
 {
     public class EventChoice
     {
-        protected int _id;
+        private int _id;
         public int Id
         {
             get => _id;
@@ -13,7 +13,7 @@ namespace miesto_meras.Models
                 _id = value;
             }
         }
-        protected string _text;
+        private string _text;
         public string Text
         {
             get => _text;

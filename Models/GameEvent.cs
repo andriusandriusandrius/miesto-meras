@@ -3,7 +3,7 @@ namespace miesto_meras.Models
 {
     public class GameEvent
     {
-        protected string _title;
+        private string _title;
         public string Title
         {
             get => _title;
@@ -13,7 +13,7 @@ namespace miesto_meras.Models
                 _title = value;
             }
         }
-        protected string _description;
+        private string _description;
         public string Description
         {
             get => _description;

@@ -3,9 +3,9 @@ using miesto_meras.Models.Buildings;
 
 public class BuildingFactoryTests
 {
-    [TestCase("Bank", typeof(Bank))]
-    [TestCase("Circus", typeof(Circus))]
-    [TestCase("TouristAttraction", typeof(TouristAttraction))]
+    [TestCase("Bankas", typeof(Bank))]
+    [TestCase("Cirkas", typeof(Circus))]
+    [TestCase("Turistų atrakcija", typeof(TouristAttraction))]
     public void Create_ReturnsCorrectBuildingType(string typeName, Type expected)
     {
         var building = BuildingFactory.Create(typeName);

@@ -5,7 +5,7 @@ namespace miesto_meras.Models
 {
     public class City
     {
-        protected string _name;
+        private string _name;
         public string Name
         {
             get => _name;
@@ -15,7 +15,7 @@ namespace miesto_meras.Models
                 _name = value;
             }
         }
-        protected int _population;
+        private int _population;
         public int Population
         {
             get => _population;
@@ -24,7 +24,7 @@ namespace miesto_meras.Models
                 _population = value;
             }
         }
-        protected int _gold;
+        private int _gold;
         public int Gold
         {
             get => _gold;
@@ -33,7 +33,7 @@ namespace miesto_meras.Models
                 _gold = value;
             }
         }
-        protected int _happiness;
+        private int _happiness;
         public int Happiness
         {
             get => _happiness;
@@ -160,19 +160,19 @@ namespace miesto_meras.Models
 
             foreach (var choice in gameEvent.Choices)
             {
-                Console.Write($"{choice.Text}; ");
+                Console.WriteLine($"({choice.Id}) {choice.Text}; ");
             }
 
 
             while (true)
             {
 
-                Console.WriteLine($"Pasirink tarp pasirinkimų 1 - {gameEvent.Choices.Count}");
+                Console.WriteLine($"Pasirink tarp pasirinkimų(Įveskite skaičių)");
 
                 string playerChoiceString = Console.ReadLine() ?? "";
-                int playerChoice;
+                int playerChoice = int.Parse(playerChoiceString);
 
-                if (int.TryParse(playerChoiceString, out playerChoice))
+                if (gameEvent.Choices.Any(c => c.Id == playerChoice))
                 {
                     if (playerChoice >= 1 && playerChoice <= gameEvent.Choices.Count)
                     {

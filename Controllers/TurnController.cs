@@ -18,8 +18,10 @@ namespace miesto_meras.Controllers
             try
             {
                 int turn = 1;
+
                 List<City> cities = JsonLoader.LoadCities();
                 SetUpCityEvents(cities);
+
                 Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
 
                 while (maxTurns >= turn)
