@@ -40,25 +40,25 @@ namespace miesto_meras.Models.Buildings
         public void Build(City city)
         {
             _buildBehaviour.Build(city, _price);
-            Console.WriteLine($"A {_name} was built.");
+            Console.WriteLine($"Buvo pastatytas {_name} ");
         }
         public void ApplyOneTimeEffect(City city)
         {
 
             _oneTimeEffect.Apply(city);
-            Console.WriteLine($"{_name} one-time effect applied.");
+            Console.WriteLine($"{_name} vienakartis efektas buvo įvykdytas");
         }
         public void ApplyPerTurnEffect(City city)
         {
             _perTurnEffect.Apply(city);
-            Console.WriteLine($"{_name} per-turn effect applied");
+            Console.WriteLine($"{_name} ėjimo efektas buvo įvykdytas");
         }
 
         public Building(string name, string effectDescription, int price, ICostBehaviour buildBehaviour, IBuildingOneTimeEffect oneTimeEffect, IBuildingPerTurnEffect perTurnEffect)
         {
-            _name = name;
-            _effectDescription = effectDescription;
-            _price = price;
+            Name = name;
+            EffectDescription = effectDescription;
+            Price = price;
             _buildBehaviour = buildBehaviour;
             _oneTimeEffect = oneTimeEffect;
             _perTurnEffect = perTurnEffect;

@@ -28,7 +28,7 @@ namespace miesto_meras.Models.Buildings
     {
         public Circus()
             : base(
-                name: "Circus",
+                name: "Cirkas",
                 effectDescription: "Suteikia +8 laimės per ėjimą. Kaina 10 aukso",
                 price: 10,
                 buildBehaviour: new CircusCostBehaviour(),
