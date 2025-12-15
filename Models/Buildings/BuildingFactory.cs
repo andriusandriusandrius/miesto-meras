@@ -6,9 +6,9 @@ namespace miesto_meras.Models.Buildings
         {
             return buildingType switch
             {
-                "Bank" => new Bank(),
-                "Circus" => new Circus(),
-                "TouristAttraction" => new TouristAttraction(),
+                "Bankas" => new Bank(),
+                "Cirkas" => new Circus(),
+                "Turistų atrakcija" => new TouristAttraction(),
                 _ => throw new ArgumentException($"Unknown building type: {buildingType}")
             };
         }

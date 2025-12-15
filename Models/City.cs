@@ -67,6 +67,7 @@ namespace miesto_meras.Models
                 _buildings.Add(building.Name, new List<Building> { building });
 
             building.Build(this);
+            building.ApplyOneTimeEffect(this);
 
         }
 
