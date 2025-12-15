@@ -27,8 +27,8 @@ namespace miesto_meras.Models
 
         public GameEvent(string title, string description, List<EventChoice> choices)
         {
-            _title = title;
-            _description = description;
+            Title = title;
+            Description = description;
             Choices = choices;
 
         }

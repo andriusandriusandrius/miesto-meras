@@ -1,6 +1,6 @@
 namespace miesto_meras.Models.Buildings
 {
-    public class CircusBuildBehaviour : IBuildBehaviour
+    public class CircusCostBehaviour : ICostBehaviour
     {
         public void Build(City city, int price)
         {
@@ -31,7 +31,7 @@ namespace miesto_meras.Models.Buildings
                 name: "Circus",
                 effectDescription: "Suteikia +8 laimės per ėjimą. Kaina 10 aukso",
                 price: 10,
-                buildBehaviour: new CircusBuildBehaviour(),
+                buildBehaviour: new CircusCostBehaviour(),
                 oneTimeEffect: new CircusOneTimeEffect(),
                 perTurnEffect: new CircusPerTurnEffect()
             )

@@ -1,6 +1,6 @@
 namespace miesto_meras.Models.Buildings
 {
-    public class TouristAttractionBuildBehaviour : IBuildBehaviour
+    public class TouristAttractionBuildBehaviour : ICostBehaviour
     {
         public void Build(City city, int price)
         {
@@ -12,7 +12,7 @@ namespace miesto_meras.Models.Buildings
     {
         public void Apply(City city)
         {
-            city.Population += 5;
+            city.Population += 50;
         }
     }
 
@@ -29,7 +29,7 @@ namespace miesto_meras.Models.Buildings
         public TouristAttraction()
             : base(
                 name: "TouristAttraction",
-                effectDescription: "Suteikia +5 populiacijos ir +2 laimės per ėjimą. Kaina 20 aukso",
+                effectDescription: "Suteikia +50 populiacijos ir +2 laimės per ėjimą. Kaina 20 aukso",
                 price: 20,
                 buildBehaviour: new TouristAttractionBuildBehaviour(),
                 oneTimeEffect: new TouristAttractionOneTimeEffect(),

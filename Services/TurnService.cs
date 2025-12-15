@@ -5,13 +5,8 @@ namespace miesto_meras.Services
 {
     public class TurnService
     {
-        private readonly Player player;
 
-        public bool hasGameBeenLost { get; private set; } = false;
-        public TurnService(Player player)
-        {
-            this.player = player;
-        }
+        public bool HasGameBeenLost { get; private set; } = false;
         public void KillUnderperformingCity(List<City> cities)
         {
             var toRemove = new List<City>();
@@ -40,13 +35,14 @@ namespace miesto_meras.Services
             }
 
         }
-        public void RunTurn(int turn)
+        public void RunTurn(int turn, List<City> cities)
         {
             Console.WriteLine($"Turn: {turn}\n");
 
-            foreach (var city in player.Cities)
+            foreach (var city in cities)
             {
                 city.Display();
+
                 if (city.BuyableBuildings.Count > 0)
                 {
                     city.HandleBuildingPhase();
@@ -57,8 +53,8 @@ namespace miesto_meras.Services
 
             }
 
-            KillUnderperformingCity(player.Cities);
-            hasGameBeenLost = !(player.Cities.Count > 0);
+            KillUnderperformingCity(cities);
+            HasGameBeenLost = !(cities.Count > 0);
 
         }
     }

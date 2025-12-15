@@ -1,7 +1,7 @@
 using miesto_meras.Models;
 using miesto_meras.Models.Buildings;
 
-public class TestBuildBehaviour : IBuildBehaviour
+public class TestBuildBehaviour : ICostBehaviour
 {
     public bool WasCalled = false;
     public City? LastCity;

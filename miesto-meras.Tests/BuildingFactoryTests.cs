@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using miesto_meras.Models.Buildings;
 
-[TestFixture]
 public class BuildingFactoryTests
 {
     [TestCase("Bank", typeof(Bank))]

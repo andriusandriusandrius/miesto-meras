@@ -1,34 +1,55 @@
+using miesto_meras.Models;
 using miesto_meras.Services;
+using miesto_meras.Utils;
 namespace miesto_meras.Controllers
 {
     public class TurnController
     {
         private readonly TurnService turnService;
-        private readonly int maxTurns;
 
 
-        public TurnController(TurnService turnService, int maxTurns)
+        public TurnController(TurnService turnService)
         {
             this.turnService = turnService;
-            this.maxTurns = maxTurns;
         }
 
-        public void RunGame()
+        public void RunGame(int maxTurns)
+        {
+            try
+            {
+                int turn = 1;
+                List<City> cities = JsonLoader.LoadCities();
+                SetUpCityEvents(cities);
+                Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
+
+                while (maxTurns >= turn)
+                {
+                    turnService.RunTurn(turn, cities);
+                    if (turnService.HasGameBeenLost) break;
+                    turn++;
+                }
+                if (turnService.HasGameBeenLost)
+                    Console.WriteLine("ZAIDIMA PRALAIMEJAI");
+                else
+                    Console.WriteLine("ZAIDIMA LAIMEJAI");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error {ex.Message}");
+            }
+        }
+        public void SetUpCityEvents(List<City> cities)
         {
 
-            int turn = 1;
-            Console.WriteLine("====== MIESTO MERAS PRASIDEJO ======\n");
+            List<GameEvent> gameEvents = JsonLoader.LoadEvents();
 
-            while (maxTurns >= turn)
+            foreach (var city in cities)
             {
-                turnService.RunTurn(turn);
-                if (turnService.hasGameBeenLost) break;
-                turn++;
+                foreach (var gameEvent in gameEvents)
+                {
+                    city.AddGameEvent(gameEvent);
+                }
             }
-            if (turnService.hasGameBeenLost)
-                Console.WriteLine("ZAIDIMA PRALAIMEJAI");
-            else
-                Console.WriteLine("ZAIDIMA LAIMEJAI");
         }
     }
 }

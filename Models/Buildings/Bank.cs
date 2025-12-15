@@ -1,10 +1,9 @@
 namespace miesto_meras.Models.Buildings
 {
-    public class BankBuildBehaviour : IBuildBehaviour
+    public class BankCostBehaviour : ICostBehaviour
     {
         public void Build(City city, int price)
         {
-
             city.Gold -= price;
         }
     }
@@ -26,10 +25,10 @@ namespace miesto_meras.Models.Buildings
     {
         public Bank()
             : base(
-                name: "Bank",
-                effectDescription: "Provides gold each turn and increases happiness.",
+                name: "Bankas",
+                effectDescription: "Suteikia +5 laimės pastačius. Suteikia +20 aukso per ėjimą. Kainuoja 100 aukso",
                 price: 100,
-                buildBehaviour: new BankBuildBehaviour(),
+                buildBehaviour: new BankCostBehaviour(),
                 oneTimeEffect: new BankOneTimeEffect(),
                 perTurnEffect: new BankPerTurnEffect()
             )

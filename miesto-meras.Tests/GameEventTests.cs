@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using miesto_meras.Models;
 
-[TestFixture]
 public class GameEventTests
 {
     [Test]

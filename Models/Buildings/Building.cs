@@ -33,7 +33,7 @@ namespace miesto_meras.Models.Buildings
                 _price = value;
             }
         }
-        protected readonly IBuildBehaviour _buildBehaviour;
+        protected readonly ICostBehaviour _buildBehaviour;
         protected readonly IBuildingOneTimeEffect _oneTimeEffect;
         protected readonly IBuildingPerTurnEffect _perTurnEffect;
 
@@ -54,7 +54,7 @@ namespace miesto_meras.Models.Buildings
             Console.WriteLine($"{_name} per-turn effect applied");
         }
 
-        public Building(string name, string effectDescription, int price, IBuildBehaviour buildBehaviour, IBuildingOneTimeEffect oneTimeEffect, IBuildingPerTurnEffect perTurnEffect)
+        public Building(string name, string effectDescription, int price, ICostBehaviour buildBehaviour, IBuildingOneTimeEffect oneTimeEffect, IBuildingPerTurnEffect perTurnEffect)
         {
             _name = name;
             _effectDescription = effectDescription;

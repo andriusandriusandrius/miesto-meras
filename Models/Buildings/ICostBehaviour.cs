@@ -1,6 +1,6 @@
 namespace miesto_meras.Models.Buildings
 {
-    public interface IBuildBehaviour
+    public interface ICostBehaviour
     {
         public void Build(City city, int price);
     }

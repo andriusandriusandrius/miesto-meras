@@ -11,7 +11,7 @@ namespace miesto_meras.Models
             get => _name;
             set
             {
-                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("A name cannot be null");
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("A city name cannot be null");
                 _name = value;
             }
         }
@@ -72,10 +72,10 @@ namespace miesto_meras.Models
 
         public City(string name, int population, int gold, int happiness, List<BuyableBuildingInformation> buyableBuildingInformation)
         {
-            _name = name;
-            _population = population;
-            _gold = gold;
-            _happiness = happiness;
+            Name = name;
+            Population = population;
+            Gold = gold;
+            Happiness = happiness;
             _buyableBuildings = buyableBuildingInformation;
         }
         public void Display()
